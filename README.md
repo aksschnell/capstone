@@ -1,5 +1,7 @@
 ### Project description
 
+This project is the final project submitted in the CS50W course from Harvard University
+
 My project is a website where users can browse different movies based on different parameters. For example by genre, by rating and by release year. 
 
 It's even possible to search for the different movies' titles and then apply the filter to those as mentioned above. 
