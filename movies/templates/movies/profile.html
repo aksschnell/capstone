@@ -1,0 +1,72 @@
+{% extends "movies/layout.html" %}
+{% load static %}
+
+
+{% block body %}
+
+<script src="{% static 'movies/profile.js' %}"></script>
+
+
+<div id="profile">
+<h2>{{user_profile.username}}</h3>
+<h3>Total reviews: {{user_profile.total_reviews}}</h3>
+<h3>Average rating: {{user_profile.average}}</h3>
+</div>
+
+
+<div class="row">
+
+    
+    {% for review in reviews %}
+        {% if forloop.counter0|divisibleby:3 %}
+            </div><br><div class="row">
+        {% endif %}
+            <div class="col-4">
+                <div class="review">            
+                    <a href="/movie/{{review.movie.id}}"><h2 id="title">{{review.movie.title}}</h2></a>
+                    <h2>Rating: {{review.score}}</h2>
+                    <p>"{{review.content}}"</p>     
+        
+                    <p data-likes="{{review.likes_amount}}" data-id="{{review.id}}la">{{review.likes_amount}} likes</p>
+                    <p data-dislikes="{{review.dislikes_amount}}" data-id="{{review.id}}da">{{review.dislikes_amount}} dislikes</p>
+                    
+                    {% if user.is_authenticated and user != review.creator %}
+                    {% if review.liked %}
+                    <div  class="buttons">
+                    <button style="display:none" data-id="{{review.id}}l" class="btn btn-primary like">Like</button>
+                    <button style="display:none" data-id="{{review.id}}d" class="btn btn-danger dislike">Dislike</button>
+                    <button data-latest="{{review.latest}}" data-id="{{review.id}}r" class="btn btn-danger remove">Remove like</button>
+                    </div>
+                    {% elif review.disliked %}
+        
+        
+                    <div class="buttons">
+                    <button data-id="{{review.id}}r" class="btn btn-danger remove">Remove dislike</button>            
+                    <button style="display:none" data-id="{{review.id}}l" class="btn btn-primary like">Like</button>
+                    <button style="display:none" data-id="{{review.id}}d" class="btn btn-danger dislike">Dislike</button> 
+                    </div>
+                    {% else %}                
+                    <div class="buttons">
+                    <button style="display:none" data-id="{{review.id}}r" class="btn btn-danger remove">Remove like</button>
+                    <button style="display:block" data-id="{{review.id}}l" class="btn btn-primary like">Like</button>
+                    <button style="display:block" data-id="{{review.id}}d" class="btn btn-danger dislike">Dislike</button>                
+                    </div>
+                    {% endif %}
+                    {% endif %}    
+                    
+        
+                </div>
+
+            </div>
+            
+{% endfor %}
+
+
+
+
+
+
+
+  
+{% endblock %}
+

@@ -1,0 +1,155 @@
+body{
+    overflow-x: hidden;
+}
+
+
+
+#score{
+    width: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.movies-container{
+    height: 100%;
+    margin: 10px;
+    margin-bottom: 50px;    
+    text-align: center;
+    
+}
+
+.movies-container :hover{
+    cursor: pointer;
+}
+
+.content{
+    width: 50%;
+    margin: auto;    
+    text-align: center;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.movies-container h3{
+    font-size: 20px;
+}
+
+.movies-container p{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+.poster{
+
+    object-fit: cover;
+    height: 300px;
+}
+
+
+.movie-container{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.movie-container h3{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.movie-container p{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+#image{
+    object-fit: cover;
+    height: 300px;
+}
+
+.review{
+    height: 100%;
+    margin: 10px;
+    margin-bottom: 50px;    
+    text-align: center;
+}
+
+.buttons button{    
+     
+    margin: auto;
+    margin-top: 10px;
+    width: 70px;
+    text-align: center;
+}
+
+.review h3{
+    font-size: 25px;
+}
+
+.review p{
+    margin: 0;
+}
+
+#newreview{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.review h2{
+
+    font-weight: 400;
+    font-size: 25px;
+}
+
+
+#profile h3 {
+
+    font-size: 25px;
+    font-weight: 400;
+}
+
+
+#profile{
+    
+    margin: auto;
+    width: 50%;
+    margin-bottom: 50px;
+    text-align: center;
+    
+}
+
+.review-container{
+  
+        margin: auto;
+        width: 50%;
+        text-align: center;
+        margin-bottom: 50px;
+    
+    
+}
+
+#search{
+
+    float: right;    
+}
+
+
+#sort-by{
+    margin: 10px;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 10px;
+    color: white;
+    text-align: center;
+  }

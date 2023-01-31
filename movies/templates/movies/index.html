@@ -1,0 +1,90 @@
+{% extends "movies/layout.html" %}
+{% load static %}
+
+
+{% block body %}
+
+
+<script src="{% static 'movies/index.js' %}"></script>
+
+
+<div id="sort-by">    
+    
+    {% if sort == "rating" %}        
+    <button id="rating" data-on="enabled" class="btn btn-primary">Rating</button>         
+    {% else %}
+    <button id="rating" data-on="disabled" class="btn btn-secondary">Rating</button> 
+    {% endif %}      
+
+    {% if sort == "release_year" %}
+    <button id="release_year" data-on="enabled" class="btn btn-primary">Release year</button>
+    {% else %}
+     <button id="release_year" data-on="disabled" class="btn btn-secondary">Release year</button> 
+    {% endif %}
+
+    
+    <div style="display:inline-block" id="genreselect">
+    <select name="genre" id="genre">
+        <option value="0"> All genres </option>
+        
+        
+        {% for genre in genres %}
+            {% if genre.id == current_genre %}
+            <option selected value="{{genre.id}}">{{genre.name}}</option>
+            
+            {% else %}
+        <option value="{{genre.id}}">{{genre.name}}</option>
+        {% endif %}
+        {% endfor %}
+
+     </select>    
+    <button id="genrebutton" class="btn btn-secondary">Submit</button>
+</div>
+</div>
+
+<div class="row">
+    {% for movie in page.object_list %}
+        {% if forloop.counter0|divisibleby:3 %}
+            </div><br><div class="row">
+        {% endif %}
+            <div class="col-4">
+                <div onclick="location.href='/movie/{{movie.id}}';" class="movies-container">
+                    <h1 style="width:100%" class="title">{{movie.title}}</h1>
+                <div class="content">
+                    <img class="poster" src="{{movie.image_url}}" alt="imageurl">                      
+                    <h3>Release year: {{movie.release_year}}</h3>                    
+                    <h3>Genre: {{movie.genre.name}}</h3>
+
+                    {% if movie.average_score == -1 %}
+                    <h3>Rating: Not yet rated</h3>
+                    {% else %}
+                    <h3>Rating: {{movie.average_score}}</h3>
+                    {% endif %}
+                    
+                </div>
+                </div>
+
+            </div>
+        
+            
+    {% endfor %}
+       
+    
+
+        <footer>
+
+        {% if page.has_previous %}
+        <a id="previous" data-page="{{page.previous_page_number}}" class="btn next-previous btn-secondary">Previous</a>
+        {% endif %}
+        {% if page.has_next %}
+        <a id="next" data-page="{{page.next_page_number}}" class="btn next-previous btn-primary">Next</a>
+        {% endif %}
+
+    </footer>
+
+
+    
+
+  
+{% endblock %}
+
